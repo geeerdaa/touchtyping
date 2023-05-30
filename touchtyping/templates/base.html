@@ -6,14 +6,11 @@
     <title>login</title>
 </head>
 <body>
-<ul class="list-group">
-    <li class="list-group-item">
-        User: {{ user }}
-    </li>
-    <li class="list-group-item">
-        <a href="{% url 'home' %}">Home</a>
-    </li>
-</ul>
+<nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
+    <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{% url 'home' %}">Home page</a>
+    <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{% url 'profile' %}">User: {{ user }}</a>
+</nav>
+
 
 {% block content %}
 {% endblock %}
