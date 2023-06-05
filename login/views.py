@@ -1,5 +1,6 @@
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate as django_authenticate, login as django_login
 from django.shortcuts import render, redirect
+from django.urls import reverse
 from django.views import View
 from login.forms import UserCreationForm
 
@@ -21,9 +22,9 @@ class Register(View):
             form.save()
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password1')
-            user = authenticate(username=username, password=password)
-            login(request, user)
-            return redirect('home')
+            user = django_authenticate(username=username, password=password)
+            django_login(request, user)
+            return redirect(reverse('home'))
         context = {
             'form': form
         }
