@@ -9,7 +9,6 @@ from django.contrib.auth.forms import AuthenticationForm
 from structlog import get_logger
 
 
-logger = get_logger()
 User = get_user_model()
 
 
