@@ -3,10 +3,8 @@ from django.contrib.auth import authenticate as django_authenticate, login as dj
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.views import View
-from login.forms import UserCreationForm, NewUserForm
-from django.contrib import messages
+from login.forms import NewUserForm
 from django.contrib.auth.forms import AuthenticationForm
-from structlog import get_logger
 
 
 User = get_user_model()
