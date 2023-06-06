@@ -1,0 +1,19 @@
+{%extends 'base.html'%}
+
+{% block content %}
+
+<div class="container py-5">
+  <h1>Login</h1>
+  <h3 id="errors"> {{ error_list }} </h3>
+  <form method="POST">
+    {% csrf_token %}
+    <label for="username">Your name: </label>
+    <input id="inputUserName" name="username" class="form-control" placeholder="username" required="" autofocus="" type="text">
+    <label for="Password">Password: </label>
+      <input id="inputPassword" name="password" class="form-control" placeholder="Password" required="" type="password">
+    <button class="btn btn-primary" type="submit">Login</button>
+  </form>
+  <p class="text-center">Don't have an account? <a href="{% url 'register' %}">Create an account</a>.</p>
+</div>
+
+{% endblock %}

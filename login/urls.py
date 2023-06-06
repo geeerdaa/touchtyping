@@ -1,9 +1,10 @@
-from django.urls import path, include
-from django.views.generic import TemplateView
+from django.urls import path
 from login.views import Register
+from . import views
 
 urlpatterns = [
-    path('auth/', include('django.contrib.auth.urls')),
+    path('login/', views.login, name='login'),
     path('register/', Register.as_view(), name='register'),
-    path('', TemplateView.as_view(template_name='home.html'), name='home'),  # TODO: REPLACE WITH NORMAL PROFILE VIEW
+    path('profile/', views.profile_page_view, name='profile'),
+    path('logout/', views.logout_page_view, name='logout'),
 ]

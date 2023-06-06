@@ -62,7 +62,7 @@ ROOT_URLCONF = 'touchtyping.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates'],
+        'DIRS': ['login/templates', 'touchtyping/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
