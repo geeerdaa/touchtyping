@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'login',
     'touchtyping',
     'tasks',
+    'user_profile'
 ]
 
 MIDDLEWARE = [
@@ -63,7 +64,7 @@ ROOT_URLCONF = 'touchtyping.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['login/templates', 'touchtyping/templates'],
+        'DIRS': ['login/templates', 'touchtyping/templates', 'user_profile/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

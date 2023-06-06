@@ -1,8 +1,14 @@
 {% extends 'base.html' %}
 {% block content %}
-<title>My profile</title>
+<title>Profile</title>
 <body>
-<h1>Profile</h1>
+<br>
+<nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
+    <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{% url 'achievements' %}">achievements</a>
+    <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{% url 'stats' %}">stats</a>
+    <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{% url 'friend' %}">friend</a>
+    {{User}}
+</nav>
 </body>
 {% endblock %}
 
