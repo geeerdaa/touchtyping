@@ -22,6 +22,6 @@ from touchtyping import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('auth/', include('login.urls')),
-    path('', views.home_page_view, name="home"),
+    path('home_page', views.home_page_view, name='home'),
+    path('tasks/', include('tasks.urls')),
 ]
-
