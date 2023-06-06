@@ -1,7 +1,10 @@
 from django.urls import path
-from django.views.generic import TemplateView
-
+from login.views import Register
+from . import views
 
 urlpatterns = [
-    path('home_page', TemplateView.as_view(template_name='home.html'), name='profile'),  # TODO: REPLACE WITH NORMAL PROFILE VIEW
+    path('login/', views.login, name='login'),
+    path('register/', Register.as_view(), name='register'),
+    path('profile/', views.profile_page_view, name='profile'),
+    path('logout/', views.logout_page_view, name='logout'),
 ]
