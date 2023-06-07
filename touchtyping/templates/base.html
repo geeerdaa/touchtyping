@@ -9,6 +9,9 @@
     {% if user.is_authenticated %}
         <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{% url 'home' %}">Home page</a>
         <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{% url 'profile' %}">Profile</a>
+        <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{% url 'achievements' %}">achievements</a>
+        <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{% url 'stats' %}">stats</a>
+        <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{% url 'friend' %}">friend</a>
     {% else %}
         <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{% url 'home' %}">Home page</a>
     {% endif %}

@@ -2,13 +2,8 @@
 {% block content %}
 <title>Profile</title>
 <body>
-<br>
-<nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
-    <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{% url 'achievements' %}">achievements</a>
-    <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{% url 'stats' %}">stats</a>
-    <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{% url 'friend' %}">friend</a>
-    {{User}}
-</nav>
+<h4>{{user}}</h4>
+<a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{% url 'profile_settings' %}">Profile settings</a>
 </body>
 {% endblock %}
 
