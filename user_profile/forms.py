@@ -12,7 +12,7 @@
 #         avatar = self.cleaned_data.get('avatar')
 #         if avatar is None:
 #             raise forms.ValidationError(u'Добавьте картинку')
-#         if 'image' not in avatar.content_type:
+#         if 'images' not in avatar.content_type:
 #             raise forms.ValidationError(u'Неверный формат картинки')
 #         return avatar
 #
