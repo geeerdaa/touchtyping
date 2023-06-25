@@ -3,7 +3,7 @@ from pyscript import Element, write, run_until_complete
 task_started = False
 
 
-def input_onClick():
+def inputPractice_onClick():
     from datetime import datetime
     import asyncio
 

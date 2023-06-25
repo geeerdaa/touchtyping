@@ -5,6 +5,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.urls import reverse, reverse_lazy
+from django.utils.decorators import method_decorator
 from django.views.generic import ListView
 
 from tasks.models import Task, Score
@@ -29,15 +30,12 @@ def get_task(request, difficulty):
     return render(request, "task.html", context=task.as_dict())
 
 
+@method_decorator(login_required, name='dispatch')
 class Leaderboards(ListView):
     model = Score
     template_name = "leaderboards.html"
 
-    @login_required(login_url=reverse_lazy("login"))
     def post(self, request, difficulty):
-        if not request.user.is_authenticated:
-            redirect(reverse('register'))
-
         time = float(request.POST["time"].split(' ')[0])
         task = Task.objects.get(week_number=datetime.today().isocalendar()[1], difficulty=difficulty)
 
@@ -47,10 +45,8 @@ class Leaderboards(ListView):
             time=time,
             task=task
         )
-
+        score.update_achievements()
         score.save()
-
-        self.__update_achievements(score)
 
         return redirect(reverse('home'))
 
