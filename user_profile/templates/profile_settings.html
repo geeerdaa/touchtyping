@@ -7,8 +7,8 @@
     <br>
     <form>
         {% csrf_token %}
-        {{name}}<br>
-        {{age}}<br>
+        {{form.name}}<br>
+        {{form.age}}<br>
         <input type="submit" value="Сохранить">
     </form>
 {% endblock %}
