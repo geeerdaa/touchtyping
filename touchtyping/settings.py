@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -28,6 +28,10 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 AUTH_USER_MODEL = 'login.User'
+# MEDIA_ROOT = os.path.join('media')
+# MEDIA_URL = '/media/'
+
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -40,6 +44,7 @@ INSTALLED_APPS = [
     'login',
     'touchtyping',
     'tasks',
+    'user_profile'
 ]
 
 MIDDLEWARE = [
@@ -57,7 +62,7 @@ ROOT_URLCONF = 'touchtyping.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates'],
+        'DIRS': ['login/templates', 'touchtyping/templates', 'user_profile/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

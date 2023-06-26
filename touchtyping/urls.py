@@ -16,12 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from django.views.generic import TemplateView
+from touchtyping import views
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('auth/', include('login.urls')),
-    path('home_page', TemplateView.as_view(template_name='home.html'), name='home'),
+    path('home_page', views.home_page_view, name='home'),
     path('tasks/', include('tasks.urls')),
+    path('user_profile/', include('user_profile.urls'))
 ]
