@@ -1,0 +1,9 @@
+{%extends 'base.html'%}
+
+{% block content %}
+<ul>
+  {% for difficulty in task_difficulties %}
+  <li><a href="{% url 'task' difficulty %}">Task {{ difficulty }}</a></li>
+  {% endfor %}
+</ul>
+{% endblock %}

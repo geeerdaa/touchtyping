@@ -1,0 +1,10 @@
+{%extends 'base.html'%}
+
+{% block content %}
+<ul>
+  {% for score in object_list %}
+    <li>{{score}}</li>
+  {% empty %}
+    <li>No scores yet. Be the first!</li>
+  {% endfor %}</ul>
+{% endblock %}

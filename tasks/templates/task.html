@@ -1,27 +1,25 @@
-<html>
-<link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
-<script defer src="https://pyscript.net/latest/pyscript.js"></script>
+{%extends 'base.html'%}
 
-<body>
+{% block content %}
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
 
     <label id="taskInstructions">Please, write the same text into lower box</label><br/>
     <label id="LabelInputDisplay">Display:</label><br/>
     <input id="inputDisplay" type="text" value="{{ content }}" readonly="true"><br/>
     <label id="LabelInputPractice">Practice: </label><br/>
-    <input id="inputPractice" py-onClick="input_onClick()"><br/>
-    <label id="timer">0 s.</label>
+    <input id="inputPractice" py-click="inputPractice_onClick()"><br/>
+    <label id="timerDisplay">0 s.</label>
 
     {% load static %}
     <py-script src="{% static 'task.py' %}"></py-script>
 
     <div id="divSubmitScore" hidden>
         <br/><br/>
-        <label id="LabelUsername">Leaderboards are not yet implemented, sorry :( </label><br/>
-<!--        <form action="/tasks/{{difficulty}}/leaderboards" method="post"> TODO: enable, when leaderboards will be done.-->
-<!--            <input id="username" type="text" name="name_field" value="Anonymous">-->
-<!--            <input type="submit" value="Leaderboards are not yet implemented, sorry :(" />-->
-<!--        </form>-->
+        <form action="/tasks/{{difficulty}}/leaderboards" method="post">
+            {% csrf_token %}
+            <input id="timerInput" type="text" name="time" hidden="true">
+            <input type="submit" value="Submit" />
+        </form>
     </div>
-
-</body>
-</html>
+{% endblock %}
