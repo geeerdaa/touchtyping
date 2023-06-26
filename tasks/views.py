@@ -10,7 +10,6 @@ from django.views.generic import ListView
 
 from tasks.models import Task, Score
 
-logger = structlog.get_logger()
 User = get_user_model()
 
 
@@ -55,6 +54,4 @@ class Leaderboards(ListView):
 
     def __update_achievements(self, score):
         better_scores_amount = Score.objects.all().filter(task__difficulty=self.kwargs["difficulty"], time__lt=score.time).count()
-        logger.warn(f"\n\n{better_scores_amount}\n\n")
         all_scores_amount = Score.objects.all().filter(task__difficulty=self.kwargs["difficulty"]).count()
-        logger.warn(f"{all_scores_amount}\n\n")

@@ -3,8 +3,6 @@ from django.db import models
 
 from touchtyping import settings
 
-logger = structlog.get_logger()
-
 
 class Task(models.Model):
     content = models.CharField(max_length=30)
@@ -28,7 +26,6 @@ class Score(models.Model):
 
     def update_achievements(self):
         for achievement in Achievement.objects.all():
-            logger.warn(f"Achievement {achievement.name}:")
             if self.user not in achievement.users.all() and achievement.is_achieved(self):
                 achievement.users.add(self.user.id)
 
@@ -73,7 +70,6 @@ class AchievementCriterion(models.Model):
             except IndexError:
                 return False
             else:
-                logger.warn(f"\t\t{score.user} needed {score.time}s., but should've completed this task in {top_score.time}s. for this achievement")
                 if top_score and score.time <= top_score.time:
                     return True
 
@@ -81,7 +77,6 @@ class AchievementCriterion(models.Model):
             task_count = Task.objects.filter(week_number=score.task.week_number).count() \
                 if self.criterion_value == -1 else self.criterion_value
             user_completed_task_count = Score.objects.filter(user=score.user).values('task').distinct().count()
-            logger.warn(f"\t\t{score.user} has completed {user_completed_task_count} tasks out of {task_count} needed for this achievement")
             if user_completed_task_count >= task_count:
                 return True
 
