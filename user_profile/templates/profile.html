@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+<title>Profile</title>
+<body>
+<h4>{{user}}</h4>
+<a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{% url 'profile_settings' %}">Profile settings</a>
+<h5>share profile: </h5>
+<script src="https://yastatic.net/share2/share.js"></script>
+<div class="ya-share2" data-curtain data-shape="round" data-services="vkontakte,telegram,viber,whatsapp"></div>
+{% endblock %}
+
