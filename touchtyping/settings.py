@@ -28,10 +28,15 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 AUTH_USER_MODEL = 'login.User'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'assets')
+]
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
-# MEDIA_ROOT = os.path.join('media')
-# MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+MEDIA_URL = '/media/'
 
 
 EMAIL_BACKEND = 'django.core.mail.backend.console.EmailBackend'
