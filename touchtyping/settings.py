@@ -28,13 +28,8 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 AUTH_USER_MODEL = 'login.User'
-LOGIN_REDIRECT_URL = '/'
-LOGOUT_REDIRECT_URL = '/'
 # MEDIA_ROOT = os.path.join('media')
 # MEDIA_URL = '/media/'
-
-
-EMAIL_BACKEND = 'django.core.mail.backend.console.EmailBackend'
 
 
 # Application definition
