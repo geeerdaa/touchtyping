@@ -1,7 +1,11 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
-from .forms import ProfileForm, ImageForm
+from django.urls import reverse_lazy
+
+from .forms import ProfileForm
 
 
+@login_required(login_url=reverse_lazy("login"))
 def achievements(request):
     """
     Renders the achievements page.
@@ -20,6 +24,7 @@ def achievements(request):
     return render(request, 'achievements.html')
 
 
+@login_required(login_url=reverse_lazy("login"))
 def stats(request):
     """
     Renders the stats page.
@@ -38,6 +43,7 @@ def stats(request):
     return render(request, 'stats.html')
 
 
+@login_required(login_url=reverse_lazy("login"))
 def friend(request):
     """
     Renders the friend page.
@@ -56,6 +62,7 @@ def friend(request):
     return render(request, 'friend.html')
 
 
+@login_required(login_url=reverse_lazy("login"))
 def profile_settings(request):
     """
     Renders the profile settings page.
@@ -71,9 +78,6 @@ def profile_settings(request):
             path('profile/settings/', views.profile_settings, name='profile_settings'),
         ]
     """
-    if not request.user.is_authenticated:
-        raise Exception('AUTH PLEASE')
-
     form = ProfileForm()
     if request.method == 'POST':
         form = ProfileForm(request.POST)
@@ -89,19 +93,22 @@ def profile_settings(request):
     return render(request, 'profile_settings.html', context)
 
 
+@login_required(login_url=reverse_lazy("login"))
 def user_profile(request):
-    if not request.user.is_authenticated:
-        raise Exception('AUTH PLEASE')
+    """
+    Handle a GET or POST request to display and update the user's profile.
 
-    form = ImageForm()
-    if request.method == 'POST':
-        form = ImageForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            img_obj = form.instance
-            return render(request, 'profile.html', {'form': form, 'img_obj': img_obj})
-    else:
-        form = ImageForm()
-    return render(request, 'profile.html', {'form': form})
+    Args:
+        request (HttpRequest): The HTTP request object containing metadata and data about the request.
+
+    Raises:
+        Exception: If the user is not authenticated.
+
+    Returns:
+        HttpResponse: The HTTP response object with the rendered 'profile.html' template.
+
+    """
+
+    return render(request, 'profile.html')
 
 

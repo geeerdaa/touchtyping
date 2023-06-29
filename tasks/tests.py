@@ -18,7 +18,10 @@ class TaskMenuViewTestCase(TestCase):
         """
         Test that the task menu page is rendered with a list of task difficulties.
         """
-        user = User.objects.create_user(username="testuser", password="testpass")
+        user = User.objects.create_user(
+            username="testuser",
+            password="U52TW31tEW5."
+        )
         self.client.force_login(user)
 
         response = self.client.get(self.url)
@@ -37,7 +40,7 @@ class TaskViewTestCase(TestCase):
         """
         Test that the task page for the specified difficulty is rendered.
         """
-        user = User.objects.create_user(username="testuser", password="testpass")
+        user = User.objects.create_user(username="testuser", password="U52TW31tEW5.")
         self.client.force_login(user)
 
         response = self.client.get(self.url)
@@ -57,7 +60,7 @@ class LeaderboardsViewTestCase(TestCase):
         """
         Test that a score is successfully submitted and user achievements are updated.
         """
-        user = User.objects.create_user(username="testuser", password="testpass")
+        user = User.objects.create_user(username="testuser", password="U52TW31tEW5.")
         self.client.force_login(user)
 
         # Add necessary data for the POST request

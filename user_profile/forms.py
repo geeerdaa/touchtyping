@@ -1,4 +1,4 @@
-from .models import Profile, Image
+from .models import Profile
 from django.forms import ModelForm, TextInput, NumberInput, ImageField
 from django import forms
 
@@ -17,12 +17,3 @@ class ProfileForm(ModelForm):
                 'placeholder': "enter age",
             })
         }
-
-
-class ImageForm(forms.ModelForm):
-    class Meta:
-        model = Image
-        fields = (
-            'title',
-            'image'
-        )

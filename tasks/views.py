@@ -58,7 +58,7 @@ def get_task(request, difficulty):
     return render(request, "task.html", context=task.as_dict())
 
 
-@method_decorator(login_required, name='dispatch')
+@method_decorator(login_required(login_url=reverse_lazy("login")), name='dispatch')
 class Leaderboards(ListView):
     """
     Displays the leaderboards for a specific task difficulty.
@@ -101,7 +101,10 @@ class Leaderboards(ListView):
 
         """
         time = float(request.POST["time"].split(' ')[0])
-        task = Task.objects.get(week_number=datetime.today().isocalendar()[1], difficulty=difficulty)
+        task = Task.objects.get(
+            week_number=datetime.today().isocalendar()[1],
+            difficulty=difficulty
+        )
 
         user = User.objects.get(username=request.user.username)
         score = Score(
