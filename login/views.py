@@ -55,10 +55,6 @@ def login(request):
     return render(request, template_name="login.html", context=context)
 
 
-def profile_page_view(request):
-    return render(request, 'profile.html')
-
-
 def logout_page_view(request):
     django_logout(request)
     return redirect(reverse("home"))

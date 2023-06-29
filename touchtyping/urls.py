@@ -14,15 +14,20 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
-from touchtyping import views
-
+from touchtyping import views, settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('auth/', include('login.urls')),
     path('home_page', views.home_page_view, name='home'),
     path('tasks/', include('tasks.urls')),
-    path('user_profile/', include('user_profile.urls'))
-]
+    path('user_profile/', include('user_profile.urls')),
+    ]
+
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL,
+                          document_root=settings.MEDIA_ROOT)
