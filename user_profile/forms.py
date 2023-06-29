@@ -1,21 +1,28 @@
-# from django import forms
-# from accounts.models import UserProfile
-#
-#
-# class UserProfileSignupForm(forms.ModelForm):
-#     avatar = forms.FileField(
-#         widget=forms.ClearableFileInput(attrs={'class': 'ask-signup-avatar-input', }),
-#         required=False, label=u'Аватар'
-#     )
-#
-#     def clean_avatar(self):
-#         avatar = self.cleaned_data.get('avatar')
-#         if avatar is None:
-#             raise forms.ValidationError(u'Добавьте картинку')
-#         if 'images' not in avatar.content_type:
-#             raise forms.ValidationError(u'Неверный формат картинки')
-#         return avatar
-#
-#     class Meta:
-#         model = UserProfile
-#         fields = ('avatar')
+from .models import Profile, Image
+from django.forms import ModelForm, TextInput, NumberInput, ImageField
+from django import forms
+
+
+class ProfileForm(ModelForm):
+    class Meta:
+        model = Profile
+        fields = ['name', 'age']
+        widgets = {
+            'name': TextInput(attrs={
+                'class': "form-control",
+                'placeholder': "enter name",
+            }),
+            'age': NumberInput(attrs={
+                'class': "form-control",
+                'placeholder': "enter age",
+            })
+        }
+
+
+class ImageForm(forms.ModelForm):
+    class Meta:
+        model = Image
+        fields = (
+            'title',
+            'image'
+        )

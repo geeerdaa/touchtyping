@@ -3,5 +3,12 @@
 <title>Profile settings</title>
 <body>
 <h4>Profile settings</h4>
-</body>
+    <br>
+    <br>
+    <form>
+        {% csrf_token %}
+        {{form.name}}<br>
+        {{form.age}}<br>
+        <input type="submit" value="Сохранить">
+    </form>
 {% endblock %}

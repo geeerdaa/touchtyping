@@ -1,3 +1,4 @@
+import structlog
 from django.db import models
 
 from touchtyping import settings
