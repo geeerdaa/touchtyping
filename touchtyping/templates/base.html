@@ -13,6 +13,12 @@
         <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{% url 'achievements' %}">achievements</a>
         <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{% url 'stats' %}">stats</a>
         <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{% url 'friend' %}">friend</a>
+    {% else %}
+        <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{% url 'login_in' %}">Tasks</a>
+        <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{% url 'login_in' %}">Profile</a>
+        <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{% url 'login_in' %}">achievements</a>
+        <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{% url 'login_in' %}">stats</a>
+        <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{% url 'login_in' %}">friend</a>
     {% endif %}
 </nav>
 <br/>

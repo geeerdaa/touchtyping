@@ -1,16 +1,25 @@
-{%extends 'base.html'%}
+{% extends 'base.html' %}
 {% block content %}
+<br>
+<h2>
+  You tried to load a page that allows access to registered users only. Please, log in here, or <a href="{% url 'register' %}">create an account</a>.
+</h2>
 <div class="container py-5">
   <h1>Login</h1>
   <h3 id="errors"> {{ error_list }} </h3>
   <form method="POST">
     {% csrf_token %}
-    <label for="username">Your name: </label>
+    <label for="username">
+      Your name:
+    </label>
     <input id="inputUserName" name="username" class="form-control" placeholder="username" required="" autofocus="" type="text">
-    <label for="Password">Password: </label>
+    <label for="Password">
+      Password:
+    </label>
       <input id="inputPassword" name="password" class="form-control" placeholder="Password" required="" type="password">
     <button class="btn btn-primary" type="submit">Login</button>
   </form>
   <p class="text-center">Don't have an account? <a href="{% url 'register' %}">Create an account</a>.</p>
 </div>
+
 {% endblock %}

@@ -55,6 +55,24 @@ def login(request):
     return render(request, template_name="login.html", context=context)
 
 
+def second_login(request):
+    form = AuthenticationForm()
+    if request.method == "POST":
+        form = AuthenticationForm(request, data=request.POST)
+        if form.is_valid():
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+            user = django_authenticate(username=username, password=password)
+            if user is not None:
+                django_login(request, user)
+                return redirect(reverse("home"))
+    context = {
+        'error_list': str(form.errors),
+        "login_form": form
+    }
+    return render(request, template_name="login_for_redirect.html", context=context)
+
+
 def logout_page_view(request):
     django_logout(request)
     return redirect(reverse("home"))

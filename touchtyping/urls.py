@@ -25,7 +25,7 @@ urlpatterns = [
     path('home_page', views.home_page_view, name='home'),
     path('tasks/', include('tasks.urls')),
     path('user_profile/', include('user_profile.urls')),
-    ]
+]
 
 
 if settings.DEBUG:
