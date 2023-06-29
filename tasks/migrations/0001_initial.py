@@ -8,6 +8,13 @@ from django.db.migrations import RunPython
 
 
 def create_default_entries(apps, schema_editor):
+    """
+    Creates default entries for tasks, achievements, and achievement criteria.
+
+    Args:
+        apps: A registry that allows accessing models in Django apps.
+        schema_editor: The schema editor used for database schema changes.
+    """
     Task = apps.get_model('tasks', 'Task')
     for week_number in range(52):
         for difficulty in range(10):
