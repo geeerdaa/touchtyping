@@ -8,6 +8,13 @@ from django.db.migrations import RunPython
 
 
 def create_default_entries(apps, schema_editor):
+    """
+    Creates default entries for the User model.
+
+    Args:
+        apps: A registry that allows accessing models in Django apps.
+        schema_editor: The schema editor used for database schema changes.
+    """
     User = apps.get_model('login', 'User')
 
     User.objects.create(
