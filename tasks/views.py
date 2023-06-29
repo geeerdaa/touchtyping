@@ -123,12 +123,3 @@ class Leaderboards(ListView):
         """
         return Score.objects.all().order_by("time").filter(task__difficulty=self.kwargs["difficulty"])[:10]
 
-    def __update_achievements(self, score):
-        """
-        Updates the achievements for the given score.
-
-        Args:
-            score: The score object for which the achievements need to be updated.
-        """
-        better_scores_amount = Score.objects.all().filter(task__difficulty=self.kwargs["difficulty"], time__lt=score.time).count()
-        all_scores_amount = Score.objects.all().filter(task__difficulty=self.kwargs["difficulty"]).count()
